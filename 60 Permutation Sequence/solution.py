@@ -1,3 +1,5 @@
+
+# just math ~
 class Solution(object):
     def getPermutation(self, n, k):
         """
@@ -6,24 +8,28 @@ class Solution(object):
         :rtype: str
         """
 
-        def dfs(seq, ans, res):
+        k -= 1
 
-            for x in seq:
-                ans_ = ans + [x]
-                tmp = [i for i in seq if i != x]
-
-                if tmp == []:
-                    res.append(ans_)
-
-                dfs(tmp, ans_, res)
+        fac = 1
+        for x in range(1, n):
+            fac *= x
 
         res = []
-        seq = range(1, n+1)
-        dfs(seq, [], res)
+        nums = range(1, n+1)
+        for i in range(n)[::-1]:
 
-        return res
+            num = nums[k/fac]
+            res.append(num)
+            nums.remove(num)
+
+            if i != 0:
+                k = k % fac
+                fac /= i
+
+        return "".join(map(str, res))
+
 
 if __name__ == '__main__':
-    print Solution().getPermutation(9, 0)
+    print Solution().getPermutation(1, 1)
 
 
