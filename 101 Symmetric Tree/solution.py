@@ -10,7 +10,7 @@ class TreeNode(object):
 class Solution(object):
 
     # 判断两颗子树是否对称
-    # ==> 判断当前两个节点是否相等, 判断其对应的子树是否相等
+    # ==> 判断当前两个节点是否相等, 判断其对应的子树是否对称
     def helper(self, p, q):
         if p is None and q is None:
             return True
